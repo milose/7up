@@ -1,0 +1,37 @@
+{
+    "extends": [
+        "plugin:vue/recommended",
+        "eslint:recommended",
+        "prettier",
+        "prettier/standard"
+    ],
+    "plugins": ["import", "prettier", "vue"],
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "env": {
+        "node": true,
+        "es6": true,
+        "jest": true
+    },
+    "rules": {
+        "new-cap": 1,
+        "semi": [2, "never"],
+        "space-before-function-paren": 1,
+        "vue/array-bracket-spacing": "error",
+        "vue/arrow-spacing": "error",
+        "vue/block-spacing": "error",
+        "vue/brace-style": "error",
+        "vue/camelcase": "error",
+        "vue/comma-dangle": ["error"],
+        "vue/component-name-in-template-casing": "error",
+        "vue/eqeqeq": "error",
+        "vue/key-spacing": "error",
+        "vue/no-boolean-default": ["error", "default-false"],
+        "vue/object-curly-spacing": ["error", "always"],
+        "vue/space-infix-ops": "error",
+        "vue/space-unary-ops": "error",
+        "vue/v-on-function-call": "error"
+    }
+}
