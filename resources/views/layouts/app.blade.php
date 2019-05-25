@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
@@ -11,23 +12,56 @@
     <title>{{ config('app.name') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/vendor.js') }}" defer></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/vendor.js') }}" defer></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    @stack('top')
 </head>
 
-<body>
+<body class="bg-gray-100 h-screen antialiased leading-none">
     <div id="app">
-        <main>
-            @yield('content')
-        </main>
+        <nav class="bg-blue-900 shadow mb-8 py-6">
+            <div class="container mx-auto px-6 md:px-0">
+                <div class="flex items-center justify-center">
+                    <div class="mr-6">
+                        <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 no-underline">
+                            {{ config('app.name', 'Laravel') }}
+                        </a>
+                    </div>
+                    <div class="flex-1 text-right">
+                        @guest
+                        <a class="no-underline hover:underline text-gray-300 text-sm p-3"
+                            href="{{ route('login') }}">{{ __('Login') }}</a>
+                        @if (Route::has('register'))
+                        <a class="no-underline hover:underline text-gray-300 text-sm p-3"
+                            href="{{ route('register') }}">{{ __('Register') }}</a>
+                        @endif
+                        @else
+                        <span class="text-gray-300 text-sm pr-4">{{ Auth::user()->name }}</span>
+
+                        <a href="{{ route('logout') }}" class="no-underline hover:underline text-gray-300 text-sm p-3"
+                            onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                            {{ csrf_field() }}
+                        </form>
+                        @endguest
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        @yield('content')
     </div>
+
+    @stack('bottom')
 </body>
 
 </html>
