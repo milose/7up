@@ -4,7 +4,8 @@ Route::get('/', 'PagesController@index');
 
 Auth::routes();
 
-Auth::routes();
+Route::post('/', 'FileController@store');
+Route::get('/{file}', 'FileController@show');
 
 Route::middleware(['auth'])
     ->namespace('Admin')

@@ -12,4 +12,23 @@ class File extends Model
     {
         return 'slug';
     }
+
+    public static function createUnique()
+    {
+        $maxTries = 3;
+        $slugLength = 4;
+
+        $next = 0;
+
+        while (true) {
+            for ($i = 0; $i < $maxTries; $i++) {
+                $slug = random_str($slugLength + $next);
+
+                if (!static::find($slug)) {
+                    return static::create(compact('slug'));
+                }
+            }
+            $next++;
+        }
+    }
 }
