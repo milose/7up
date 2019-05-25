@@ -63,6 +63,7 @@
         </nav>
 
         @yield('content')
+        <!-- @TODO: extract container here, to center all content -->
     </div>
 
     <footer class="bg-gray-200 text-gray-800 text-xs shadow mt-8 py-6">
