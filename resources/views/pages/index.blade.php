@@ -3,9 +3,9 @@
 @section('content')
 
 <div class="container mx-auto px-6 md:px-0">
-    <section class="mb-3">
+    <section class="mb-6">
         <h2 class="text-2xl leading-loose">Usage</h2>
-        <p>7up is a free service. Small files are kept for 7 days, and larger files for 7 hours.</p>
+        <p><span class="font-mono font-semibold text-blue-800">7up</span> is a free file upload service. Small files are kept for 7 days, and larger files for 7 hours.</p>
     </section>
     <ul class="flex">
         <li class="flex-1 mr-2 cursor-pointer" @click="selectTab(0)">
@@ -21,9 +21,9 @@
     <hr class="border">
     <section :class="getContainerClass(0)">
         <p class="py-2">Examples:</p>
-        <pre><code class="language-bash shadow-md m-2 md:m-3">7up /tmp/readme.md
-7up /tmp/readme.md name.md        # with a new name
-cat /tmp/readme.md | 7up name.md  # using a pipe operator
+        <pre><code class="language-bash shadow-md m-2 md:m-3"><strong>7up</strong> /tmp/readme.md
+<strong>7up</strong> /tmp/readme.md name.md        # with a new name
+cat /tmp/readme.md | <strong>7up</strong> name.md  # using a pipe operator
 </code></pre>
         <div class="m-2 md:m-3">
             <div class="py-2">To use <span class="font-mono font-semibold text-blue-800">7up</span> command in the
@@ -41,7 +41,9 @@ cat /tmp/readme.md | 7up name.md  # using a pipe operator
     </section>
 
     <section :class="getContainerClass(1)">
-        <p class="py-2">To install <span class="font-mono font-semibold text-blue-800">7up</span>, simply add this function to your <span class="font-mono text-blue-500">~/.bash_profile</span> (MacOS) or <span class="font-mono text-blue-500">~/.bashrc</span> (Ubuntu).</p>
+        <p class="py-2">To install <span class="font-mono font-semibold text-blue-800">7up</span>, simply add this
+            function to your <span class="font-mono text-blue-500">~/.bash_profile</span> (MacOS) or <span
+                class="font-mono text-blue-500">~/.bashrc</span> (Ubuntu).</p>
         <pre><code class="language-bash m-2 md:m-3 shadow-md">7up ()
 {
     if [ $# -eq 0 ]; then
