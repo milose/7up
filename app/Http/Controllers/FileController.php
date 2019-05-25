@@ -31,7 +31,7 @@ class FileController extends Controller
         $url = config('app.url').'/'.$file->slug;
 
         return
-            "File uploaded.\n".
+            "File {$file->name} uploaded.\n".
             "  {$url}\n".
             "To download use:\n".
             "  wget --content-disposition {$url}\n".
