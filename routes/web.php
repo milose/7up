@@ -12,3 +12,5 @@ Route::middleware(['auth'])
     ->group(function () {
         Route::get('/home', 'HomeController@index')->name('home');
     });
+
+// @TODO: Schedule an hourly job to clean up old files.
