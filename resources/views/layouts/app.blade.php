@@ -66,10 +66,18 @@
 
     <footer class="bg-gray-200 text-gray-800 text-xs shadow mt-8 py-6">
         <div class="container mx-auto text-center px-6 md:px-0">made with
-            <svg class="fill-current text-red-300 inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z"></path></svg>
-            by deva.co &mdash; github
+            <svg class="fill-current text-red-300 inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20">
+                <path d="M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z">
+                </path>
+            </svg>
+            by <a target="_blank" href="https://milos.link">milos</a> &mdash;
+            <!-- @TODO: Repository -->
+            <a target="_blank" href="https://github.com/milose">github</a> |
+            <a target="_blank" href="https://liberapay.com/milose/donate">donate</a>
 
-            <p class="mt-3 text-gray-500">7 Up is a trademark owned by Keurig Dr Pepper and PepsiCo, Inc.</p>
+            <p class="mt-3 text-gray-500"><a href="https://7up.com">7UP</a> is a trademark of Dr Pepper/Seven Up, Inc.
+            </p>
         </div>
     </footer>
 
