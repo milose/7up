@@ -2,7 +2,7 @@
 
 Route::get('/', 'PagesController@index');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::middleware(['auth'])
     ->namespace('Admin')
