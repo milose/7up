@@ -18,15 +18,13 @@ class FileController extends Controller
             'name' => 'nullable',
         ]);
 
-        $size = request('file')->getClientSize();
-
-        $file = tap(File::createUnique())->update([
+        $file = File::createWithSlug([
             'name' => request('name') ?? request('file')->getClientOriginalName(),
-            'size' => $size,
-            'expires_at' => ($size < 262144) ? now()->addhours(7) : now()->addDays(7),
+                'size' => request('file')->getClientSize(),
+                'is_image' => explode('/', request('file')->getClientMimeType())[0] === 'image',
         ]);
 
-        request('file')->storeAs('files', $file->id, 'local');
+        request('file')->storeAs(config('7up.path'), $file->id, 'storage');
 
         $url = config('app.url').'/'.$file->slug;
 
