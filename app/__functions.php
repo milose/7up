@@ -25,3 +25,11 @@ if (!function_exists('random_str')) {
         return implode('', $pieces);
     }
 }
+
+if (!function_exists('human_filesize')) {
+    function human_filesize($bytes)
+    {
+        $i = floor(log($bytes, 1024));
+        return round($bytes / pow(1024, $i), [0,0,2,2,3][$i]).['B','kB','MB','GB','TB'][$i];
+    }
+}
