@@ -4,10 +4,16 @@ Route::get('/', 'PagesController@index');
 
 Auth::routes(['verify' => true]);
 
-Route::middleware(['auth'])
-    ->namespace('Admin')
+Route::middleware(['verified'])
+    ->namespace('Verified')
     ->group(function () {
         Route::get('/home', 'HomeController@index')->name('home');
+    });
+
+Route::middleware(['verified', 'admin'])
+    ->namespace('Admin')
+    ->group(function () {
+        Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     });
 
 Route::post('/', 'FileController@store');
