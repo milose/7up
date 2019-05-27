@@ -63,8 +63,10 @@
             </div>
         </nav>
 
-        @yield('content')
-        <!-- @TODO: extract container here, to center all content -->
+        <div class="container mx-auto px-6 md:px-0">
+                @yield('content')
+        </div>
+
     </div>
 
     <footer class="bg-gray-200 text-gray-800 text-xs shadow mt-8 py-6">
