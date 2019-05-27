@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\File;
 use App\Jobs\ClassifyImage;
+use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
@@ -22,10 +23,10 @@ class FileController extends Controller
         $file = File::createWithSlug([
                 'name' => request('name') ?? request('file')->getClientOriginalName(),
                 'size' => request('file')->getClientSize(),
-                'is_image' => explode('/', request('file')->getClientMimeType())[0] === 'image',
+                'is_image' => explode('/', \File::mimeType(request('file')->getPathName()))[0] === 'image',
             ]);
 
-        request('file')->storeAs(config('7up.path'), $file->id, 'storage');
+        request('file')->storeAs(null, $file->id, 'bucket');
 
         $url = config('app.url').'/'.$file->slug;
 
@@ -34,9 +35,9 @@ class FileController extends Controller
         }
 
         return response("File {$file->name} uploaded.\n".
-            "  {$url}\n".
-            "To download use:\n".
-            "  wget --content-disposition {$url}\n".
+                "  {$url}\n".
+                "To download use:\n".
+                "  wget --content-disposition {$url}\n".
                 "  curl -JLO {$url}\n", 201)
             ->header('X-File-Url', $url)
             ->header('X-File-Name', $file->name)
@@ -45,9 +46,6 @@ class FileController extends Controller
 
     public function show(File $file)
     {
-        return response()->download(
-            storage_path(config('7up.path') . $file->id),
-            $file->name
-        );
+        return Storage::disk('bucket')->download($file->id, $file->name);
     }
 }
