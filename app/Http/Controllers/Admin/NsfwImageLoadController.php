@@ -9,7 +9,7 @@ class NsfwImageLoadController extends Controller
 {
     public function show(File $file)
     {
-        $fileName = config('7up.storage').'/'.config('7up.path').'/'.$file->id;
+        abort_unless($file->is_image, 415, 'Unsupported Media Type');
 
         return response()->file($fileName);
     }
