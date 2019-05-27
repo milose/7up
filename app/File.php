@@ -8,6 +8,11 @@ class File extends Model
 {
     protected $guarded = [];
 
+    protected $casts = [
+        'is_image' => 'boolean',
+        'expires_at' => 'datetime',
+    ];
+
     public function getRouteKeyName()
     {
         return 'slug';
