@@ -33,12 +33,14 @@ class FileController extends Controller
             ClassifyImage::dispatch($file);
         }
 
-        return
-            "File {$file->name} uploaded.\n".
+        return response("File {$file->name} uploaded.\n".
             "  {$url}\n".
             "To download use:\n".
             "  wget --content-disposition {$url}\n".
-            "  curl -JLO {$url}\n";
+                "  curl -JLO {$url}\n", 201)
+            ->header('X-File-Url', $url)
+            ->header('X-File-Name', $file->name)
+            ->header('X-File-Handle', $file->slug);
     }
 
     public function show(File $file)
