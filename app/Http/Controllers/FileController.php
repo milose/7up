@@ -21,7 +21,7 @@ class FileController extends Controller
         ]);
 
         $file = File::createWithSlug([
-                'name' => request('name') ?? request('file')->getClientOriginalName(),
+                'name' => request('name') ?: request('file')->getClientOriginalName(),
                 'size' => request('file')->getClientSize(),
                 'is_image' => explode('/', \File::mimeType(request('file')->getPathName()))[0] === 'image',
             ]);
