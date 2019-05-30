@@ -20,6 +20,6 @@ Route::middleware(['verified', 'admin'])
     });
 
 Route::post('/', 'FileController@store');
-Route::get('/{file}', 'FileController@show');
+Route::get('/{file}/{newName?}', 'FileController@show')->name('download');
 
 // @TODO: Schedule an hourly job to clean up old files.

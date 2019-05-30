@@ -44,8 +44,8 @@ class FileController extends Controller
             ->header('X-File-Handle', $file->slug);
     }
 
-    public function show(File $file)
+    public function show(File $file, $newName = null)
     {
-        return Storage::disk('bucket')->download($file->id, $file->name);
+        return Storage::disk('bucket')->download($file->id, $newName ?: $file->name);
     }
 }
